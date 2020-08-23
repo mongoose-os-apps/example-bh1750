@@ -1,0 +1,33 @@
+author: rojer
+description: Sample application for the BH1750 driver
+version: 1.0.0
+
+libs_version: latest
+modules_version: latest
+mongoose_os_version: latest
+
+sources:
+  - src
+
+filesystem:
+  - fs
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/bh1750
+
+  - origin: https://github.com/mongoose-os-libs/dns-sd
+  - origin: https://github.com/mongoose-os-libs/http-server
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/wifi
+
+config_schema:
+  - ["i2c.enable", true]
+  # May need to be adjusted for your board.
+  - ["i2c.sda_gpio", 4]
+  - ["i2c.scl_gpio", 5]
+  # Give device a static name so we know hostname upfront.
+  - ["dns_sd.host_name", "BH1750-test"]
+  - ["dns_sd.enable", true]
+
+manifest_version: 2017-06-29
